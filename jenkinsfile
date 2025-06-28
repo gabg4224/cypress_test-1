@@ -19,20 +19,20 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        sh 'npm ci'
+        bat  'npm ci'
       }
     }
 
     stage('Run Cypress tests') {
       steps {
-        sh 'test:qa'
+        bat  'test:qa'
       }
     }
 
     stage('Generate Reports') {
       steps {
-        sh 'npx mochawesome-merge cypress/reports/*.json > mochawesome.json'
-        sh 'npx marge mochawesome.json --reportDir cypress/reports --reportFilename index.html'
+        bat  'npx mochawesome-merge cypress/reports/*.json > mochawesome.json'
+        bat  'npx marge mochawesome.json --reportDir cypress/reports --reportFilename index.html'
       }
     }
 
