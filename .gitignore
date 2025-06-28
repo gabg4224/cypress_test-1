@@ -1,0 +1,35 @@
+# Node modules (nunca subir)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cypress artefactos temporales
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Reportes generados (mochawesome, etc.)
+cypress/reports/
+mochawesome-report/
+mochawesome.html
+mochawesome.json
+
+# Sistema operativo y editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Entornos y secretos (si usás dotenv o similares)
+.env
+.env.*.local
+
+# Otros archivos de lock
+yarn.lock
+
+# Jenkins, CI/CD, coverage (si aplicara)
+coverage/
