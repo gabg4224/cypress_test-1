@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-28T23:44:37.425Z",
+    "end": "2025-06-28T23:44:39.838Z",
+    "duration": 2413,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c5053414-54c2-4984-be6a-2366e993a4f4",
+      "title": "",
+      "fullFile": "cypress\\e2e\\filters.cy.js",
+      "file": "cypress\\e2e\\filters.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e7a24c1e-73e5-4394-bd40-bee3895312ec",
+          "title": "validar filtros",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validar mayor-menor precio",
+              "fullTitle": "validar filtros validar mayor-menor precio",
+              "timedOut": null,
+              "duration": 2383,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_product_pages.default.elements.filter().select(\"hilo\");\n_product_pages.default.elements.cardsElements().then($prices => {\n  const prices = [...$prices].map(p => parseFloat(p.innerText.replace(\"$\", \"\")));\n  const sorted_prices = prices.sort((a, b) => b - a);\n  expect(prices).to.deep.equal(sorted_prices);\n});",
+              "err": {},
+              "uuid": "de5a8a73-7259-48b4-8692-9723eed99a99",
+              "parentUUID": "e7a24c1e-73e5-4394-bd40-bee3895312ec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "de5a8a73-7259-48b4-8692-9723eed99a99"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2383,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
