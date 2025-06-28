@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   tools {
-    nodejs 'Node 18' 
+    nodejs 'node24' 
   }
 
   environment {
@@ -25,7 +25,7 @@ pipeline {
 
     stage('Run Cypress tests') {
       steps {
-        sh 'npx cypress run'
+        sh 'test:qa'
       }
     }
 
