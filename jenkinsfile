@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/tuusuario/tu-repo.git'
+        git 'https://github.com/gabg4224/cypress_test-1.git'
       }
     }
 
