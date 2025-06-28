@@ -6,8 +6,8 @@ pipeline {
   }
 
   environment {
-    CYPRESS_user_mail = credentials('usuario_qa') // usa un secret en Jenkins
-    CYPRESS_user_password = credentials('clave_qa')
+    CYPRESS_user_mail = credentials('user_mail') // usa un secret en Jenkins
+    CYPRESS_user_password = credentials('user_password')
   }
 
   stages {
