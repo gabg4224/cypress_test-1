@@ -1,0 +1,50 @@
+pipeline {
+  agent any
+
+  tools {
+    nodejs 'Node 18' 
+  }
+
+  environment {
+    CYPRESS_user_mail = credentials('usuario_qa') // usa un secret en Jenkins
+    CYPRESS_user_password = credentials('clave_qa')
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/tuusuario/tu-repo.git'
+      }
+    }
+
+    stage('Install dependencies') {
+      steps {
+        sh 'npm ci'
+      }
+    }
+
+    stage('Run Cypress tests') {
+      steps {
+        sh 'npx cypress run'
+      }
+    }
+
+    stage('Generate Reports') {
+      steps {
+        sh 'npx mochawesome-merge cypress/reports/*.json > mochawesome.json'
+        sh 'npx marge mochawesome.json --reportDir cypress/reports --reportFilename index.html'
+      }
+    }
+
+    stage('Publish Report') {
+      steps {
+        publishHTML([allowMissing: false,
+          alwaysLinkToLastBuild: true,
+          keepAll: true,
+          reportDir: 'cypress/reports',
+          reportFiles: 'index.html',
+          reportName: 'Cypress Report'])
+      }
+    }
+  }
+}
