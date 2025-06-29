@@ -17,6 +17,15 @@ pipeline {
       }
     }
 
+    stage('Clean install') {
+  steps {
+    bat 'if exist node_modules rmdir /s /q node_modules'
+    bat 'if exist package-lock.json del package-lock.json'
+    bat 'npm install'
+  }
+}
+
+
     stage('Install dependencies') {
       steps {
         bat 'npm ci'
@@ -29,6 +38,13 @@ pipeline {
         bat 'type cypress.config.qa.js'
       }
     }
+    stage('Debug: Mochawesome') {
+  steps {
+    bat 'dir node_modules\\mochawesome'
+    bat 'type package.json'
+  }
+}
+
 
     stage('Run Cypress tests') {
       steps {
