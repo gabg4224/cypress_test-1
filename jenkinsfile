@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    CYPRESS_user_mail = credentials('user_mail') // usa un secret en Jenkins
+    CYPRESS_user_mail = credentials('user_mail')
     CYPRESS_user_password = credentials('user_password')
   }
 
@@ -19,20 +19,27 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        bat  'npm ci'
+        bat 'npm ci'
+      }
+    }
+
+    stage('Debug: List files and show config') {
+      steps {
+        bat 'dir'
+        bat 'type cypress.config.qa.js'
       }
     }
 
     stage('Run Cypress tests') {
       steps {
-        bat  'npm run test:qa'
+        bat 'npm run test:qa'
       }
     }
 
     stage('Generate Reports') {
       steps {
-        bat  'npx mochawesome-merge cypress/reports/*.json > mochawesome.json'
-        bat  'npx marge mochawesome.json --reportDir cypress/reports --reportFilename index.html'
+        bat 'npx mochawesome-merge cypress/reports/*.json > mochawesome.json'
+        bat 'npx marge mochawesome.json --reportDir cypress/reports --reportFilename index.html'
       }
     }
 
